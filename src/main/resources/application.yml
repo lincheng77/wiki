@@ -1,5 +1,5 @@
 server:
   port: 8080
 
-#myenv:
-#  name: 十下
+myenv:
+  name: 十下是笔名
