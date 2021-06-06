@@ -1,5 +1,17 @@
 server:
   port: 8080
 
+spring:
+  # 增加数据库连接
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://152.136.127.162/wiki?characterEncoding=UTF8&autoReconnect=true&serverTimezone=Asia/Shanghai&allowMultiQueries=true
+    username: wiki
+    password: wiki
+
+# 配置mybatis所有Mapper.xml所在的路径
+mybatis:
+  mapper-locations: classpath:/mapper/**/*.xml
+
 myenv:
   name: 十下是笔名
