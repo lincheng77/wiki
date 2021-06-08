@@ -2,6 +2,7 @@ HELP.md
 target/
 log/
 .idea/
+web/node_modules/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
