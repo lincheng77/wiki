@@ -1,5 +1,5 @@
 
-GET http://localhost:8080/ebook/list
+GET http://localhost:8088/ebook/list
 Content-Type: application/x-www-form-urlencoded
 
 name=Boot
