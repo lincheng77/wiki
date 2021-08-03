@@ -15,7 +15,7 @@ import java.io.IOException;
  **/
 
 
-@Component
+//@Component
 public class LogFilter implements Filter {
 
     private static final Logger LOG = LoggerFactory.getLogger(LogFilter.class);

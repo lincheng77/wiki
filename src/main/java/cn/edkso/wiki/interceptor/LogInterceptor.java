@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
  * @description:
  **/
 
-@Component
+//@Component
 public class LogInterceptor implements HandlerInterceptor {
 
     private static final Logger LOG = LoggerFactory.getLogger(LogInterceptor.class);
