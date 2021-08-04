@@ -13,5 +13,14 @@ spring:
 mybatis:
   mapper-locations: classpath:/mapper/**/*.xml
 
+# 打印所有的sql日志：sql,参数,结果
+logging:
+  level:
+    cn:
+      edkso:
+        wiki:
+          mapper: trace
+
+
 myenv:
   name: 十下是笔名

@@ -15,7 +15,6 @@ import java.util.List;
 @RestController
 @RequestMapping("/ebook")
 public class EbookController {
-    
 
     @Resource
     private EbookService ebookService;
