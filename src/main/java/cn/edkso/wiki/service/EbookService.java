@@ -5,6 +5,7 @@ import cn.edkso.wiki.domain.EbookExample;
 import cn.edkso.wiki.mapper.EbookMapper;
 import cn.edkso.wiki.req.EbookReq;
 import cn.edkso.wiki.resp.EbookResp;
+import cn.edkso.wiki.resp.PageResp;
 import cn.edkso.wiki.utils.CopyUtil;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -24,7 +25,7 @@ public class EbookService {
     @Resource
     private EbookMapper ebookMapperr;
 
-    public List<EbookResp> list(EbookReq ebookReq) {
+    public PageResp<EbookResp> list(EbookReq ebookReq) {
         EbookExample ebookExample = new EbookExample();
         EbookExample.Criteria criteria = ebookExample.createCriteria();
 
@@ -32,14 +33,19 @@ public class EbookService {
             criteria.andNameLike("%" + ebookReq.getName() + "%");
         }
 
-        PageHelper.startPage(1,3);
+        PageHelper.startPage(ebookReq.getPage(),ebookReq.getSize());
         List<Ebook> ebookList = ebookMapperr.selectByExample(ebookExample);
         PageInfo<Ebook> pageInfo = new PageInfo<>(ebookList);
         LOG.info("总行数：{}", pageInfo.getTotal());
         LOG.info("总页数：{}", pageInfo.getPages());
 
         List<EbookResp> ebookRespList = CopyUtil.copyList(ebookList, EbookResp.class);
-        return ebookRespList;
+
+        PageResp<EbookResp> pageResp = new PageResp<>();
+        pageResp.setTotal(pageInfo.getTotal());
+        pageResp.setList(ebookRespList);
+
+        return pageResp;
     }
     
 }
