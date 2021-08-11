@@ -1,7 +1,13 @@
 <template>
 
   <a-layout>
+
     <a-layout-content :style="{ background: '#fff', padding: '24px', margin: 0, minHeight: '280px' }">
+      <p>
+        <a-button type="primary" @click="add()" size="large">
+          新增
+        </a-button>
+      </p>
       <a-table :columns="columns"
                :row-key="record => record.id"
                :data-source="ebooks"
@@ -160,6 +166,13 @@ export default defineComponent({
       modalVisible.value = true;
       ebook.value = record
     };
+    /**
+     * 新增
+     */
+    const add = (record) => {
+      modalVisible.value = true;
+      ebook.value = {};
+    };
 
     //--------------------------------------------onMounted 和 return--------------------------------------------------
     onMounted(() => {
@@ -174,10 +187,13 @@ export default defineComponent({
       columns,
       loading,
       handleTableChange,
-      edit,
-      ebook,
+
+      /************表单***********/
       modalVisible,
       modalLoading,
+      ebook,
+      edit,
+      add,
       handleModalOk
     }
   }
