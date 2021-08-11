@@ -139,10 +139,19 @@ export default defineComponent({
     const modalLoading = ref(false);
     const handleModalOk = () => {
       modalLoading.value = true;
-      setTimeout(() => {
-        modalVisible.value = false;
-        modalLoading.value = false;
-      }, 2000);
+      axios.post("/ebook/save", ebook.value)
+          .then((response) => {
+            if (response.data.success) {
+              modalVisible.value = false;
+              modalLoading.value = false;
+              // 重新加载列表
+              handleQuery({
+                page: pagination.value.current,
+                size: pagination.value.pageSize
+              });
+            }
+          }
+      );
     };
     /**
      * 编辑
@@ -152,7 +161,7 @@ export default defineComponent({
       ebook.value = record
     };
 
-    //--------------------------------------------onMounted return--------------------------------------------------
+    //--------------------------------------------onMounted 和 return--------------------------------------------------
     onMounted(() => {
       handleQuery({
         page: 1,
